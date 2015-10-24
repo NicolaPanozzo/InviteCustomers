@@ -95,12 +95,20 @@
   <ItemGroup>
     <Compile Include="Customer.cs" />
     <Compile Include="GPSPoint.cs" />
-    <Compile Include="JsonObjectReader.cs" />
-    <Compile Include="IObjectReader.cs" />
+    <Compile Include="IStreamReader.cs" />
+    <Compile Include="IWebClient.cs" />
+    <Compile Include="IWebClientFactory.cs" />
+    <Compile Include="JsonDeserializer.cs" />
+    <Compile Include="IObjectDeserializer.cs" />
     <Compile Include="Invite.cs" />
     <Compile Include="IStream.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UrlReader.cs" />
+    <Compile Include="StreamToStreamReader.cs" />
+    <Compile Include="SystemWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SystemWebClientFactory.cs" />
+    <Compile Include="UriToStream.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

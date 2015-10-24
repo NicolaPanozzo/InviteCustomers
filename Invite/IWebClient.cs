@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.IO;
 
 namespace Invite
 {
-    //define a method to create a Stream from a generic source
-    public interface IStream
+    public interface IWebClient : IDisposable
     {
-        Stream GetStream();
+        Stream OpenRead(String UriAddress);
     }
 }

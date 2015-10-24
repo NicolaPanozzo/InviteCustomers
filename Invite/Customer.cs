@@ -6,7 +6,7 @@ using System.Text;
 namespace Invite
 {
     //map to JSON objects
-    class Customer
+    public class Customer
     {
         public double Latitude { get; set; }
         public int User_id { get; set; }

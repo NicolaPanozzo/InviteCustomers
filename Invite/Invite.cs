@@ -13,7 +13,7 @@ namespace Invite
         static void Main(string[] args)
         {
             //URL where a text file containing JSON objects is located
-            const string URL = "https://gist.githubusercontent.com/brianw/19896c50afa89ad4dec3/raw/" +
+            const string URI = "https://gist.githubusercontent.com/brianw/19896c50afa89ad4dec3/raw/" +
                 "6c11047887a03483c50017c1d451667fd62a53ca/gistfile1.txt";
 
             //initialize a GPSPoint with Dublin GPS coordiantes
@@ -24,9 +24,12 @@ namespace Invite
             //that implements the interfaces IReader and IObjectreader respectively
             try
             {
-                UrlReader myUrlReader = new UrlReader(URL);
-                JsonObjectReader<Customer> myJsonObjectReader = new JsonObjectReader<Customer>(myUrlReader);
-                List<Customer> customers = myJsonObjectReader.FetchObjects().ToList();
+                SystemWebClientFactory myWebClientFactory = new SystemWebClientFactory();
+                UriToStream myUriToStream = new UriToStream(myWebClientFactory, URI);
+                StreamToStreamReader myStreamReader = new StreamToStreamReader(myUriToStream);
+                JsonDeserializer<Customer> myJsonDeserializer = 
+                    new JsonDeserializer<Customer>(myStreamReader);
+                List<Customer> customers = myJsonDeserializer.Deserialize().ToList();
 
                 //sort list of customers by User_id
                 List<Customer> sortedCustomers = (from c in customers orderby c.User_id select c)

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Invite
 {
-    struct GPSPoint
+    public class GPSPoint
     {
         //GPS coordinates in radians
         private double latitude;

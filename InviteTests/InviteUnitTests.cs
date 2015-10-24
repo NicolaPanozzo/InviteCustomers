@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Invite;
+using System.IO;
+using System.Text;
 
 namespace InviteTests
 {
@@ -24,6 +26,24 @@ namespace InviteTests
 
             Assert.AreEqual(expectedDistance, actualDistance, 0.000001, "Distance not calculated correctly");
 
+        }
+
+        [TestMethod]
+        public void DeserializeCanDeserializeJsonObjectsFromStreamReader()
+        {
+            StreamReader mockStreamReader = CreateMockStream();
+            
+        }
+
+        private static StreamReader CreateMockStream()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine("{\"latitude\": \"52.986375\", \"user_id\": 12, \"name\": \"Christina McArdle\", \"longitude\": \"-6.043701\"}");
+            stringBuilder.AppendLine("{\"latitude\": \"51.92893\", \"user_id\": 1, \"name\": \"Alice Cahill\", \"longitude\": \"-10.27699\"}");
+
+            var streamReader = new StreamReader(new MemoryStream(Encoding.ASCII.GetBytes(stringBuilder.ToString())));
+            return streamReader;
         }
     }
 }
