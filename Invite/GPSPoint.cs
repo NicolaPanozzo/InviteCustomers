@@ -30,5 +30,18 @@ namespace Invite
 
             return distance;
         }
+
+        public double Latitude
+        {
+            get { return latitude; }
+            set { latitude = value; }
+        }
+
+        public double Longitude
+        {
+            get { return longitude; }
+            set { longitude = value; }
+        }
+
     }
 }

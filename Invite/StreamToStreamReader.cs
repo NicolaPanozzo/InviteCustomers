@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Invite
 {
-    class StreamToStreamReader : IStreamReader
+    public class StreamToStreamReader : IStreamReader
     {
         private IStream stream;
 

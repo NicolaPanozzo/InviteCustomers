@@ -38,10 +38,13 @@ namespace Invite
                 //print out the list of invited customers
                 foreach (Customer customer in sortedCustomers)
                 {
-                    if (customer.GetCustomerLocation().Distance(DublinLocation) <= 100)
+                    GPSPoint customerLocation = new GPSPoint(customer.Latitude * Math.PI / 180,
+                        customer.Longitude * Math.PI / 180);
+                    double customerDistance = customerLocation.Distance(DublinLocation);
+                    if (customerDistance <= 100)
                     {
                         Console.WriteLine("User ID: {0} Customer Name: {1} Distance: {2}",
-                        customer.User_id, customer.Name, customer.GetCustomerLocation().Distance(DublinLocation));
+                        customer.User_id, customer.Name, customerDistance);
                     }
                 }
             }

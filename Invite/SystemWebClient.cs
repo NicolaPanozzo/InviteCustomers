@@ -7,7 +7,7 @@ using System.Net;
 
 namespace Invite
 {
-    class SystemWebClient : WebClient, IWebClient
+    public class SystemWebClient : WebClient, IWebClient
     {
     }
 }
